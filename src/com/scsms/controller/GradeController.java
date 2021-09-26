@@ -107,6 +107,7 @@ public class GradeController {
 	@ResponseBody
 	public void insert(Grade obj,HttpServletResponse response) throws IOException {
 		obj.setState("报名");
+		System.out.println(obj);
 		int i = service.insert(obj);
 		if(i!=0) {
 			try {

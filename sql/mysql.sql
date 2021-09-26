@@ -5,10 +5,10 @@
 */
 
 
-DROP DATABASE IF EXISTS chenyu_bsdb;
-create database if not exists chenyu_bsdb character set UTF8;
+DROP DATABASE IF EXISTS bs_db;
+create database if not exists bs_db character set UTF8;
 
-use chenyu_bsdb;
+use bs_db;
 
 /**
  * 
@@ -184,7 +184,10 @@ create table coment(
 	time datetime
 );
 
-
+/**
+ * 5.7不用加这些
+**/
+/**
 ALTER TABLE user TYPE= INNODB;
 ALTER TABLE role TYPE= INNODB;
 ALTER TABLE student TYPE= INNODB;
@@ -197,6 +200,7 @@ ALTER TABLE notice TYPE= INNODB;
 ALTER TABLE payment TYPE= INNODB;
 ALTER TABLE room TYPE= INNODB;
 ALTER TABLE student_grade TYPE= INNODB;
+**/
 
 insert into lesson(id,lessonname,notes,price,hours)values(1,'java后端','此为系统默认数据，可删除',10000,1000);
 insert into room(roomname,location)values('培训中心101','西南石油大学思学楼，此为默认数据，可删除');

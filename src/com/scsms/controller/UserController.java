@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,6 +54,15 @@ public class UserController {
 	@RequestMapping("list")
 	@ResponseBody
 	public Map<String,Object> list(String page,String limit,HttpServletRequest request){
+		Cookie[] cookies = request.getCookies();//这样便可以获取一个cookie数组
+        if (null==cookies) {
+            System.out.println("没有cookie=========");
+        } else {
+            for(Cookie cookie : cookies){
+                System.out.println("name:"+cookie.getName()+",value:"+ cookie.getValue());
+            }
+        }
+
 		String key=request.getParameter("key[id]");
 		Map<String, Object> map = new HashMap<String, Object>();
 		if(key!=null) {

@@ -66,26 +66,32 @@ public class MarkController {
 	@RequestMapping("stu_list")
 	@ResponseBody
 	public Map<String,Object> stu_list(String page,String limit,HttpSession session){
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 		User user =(User) session.getAttribute("student");
-		Student stu=sservice.queryObject(user.getId());
-		int currentPage =Integer.parseInt(page);
-		int size = Integer.parseInt(limit);
-		int offset = (currentPage - 1)*size;
-		int count = service.queryCountByStudent(stu.getId());
-		if(count!=0) {
-			List<Mark> data = service.queryPageByStudent(offset, size,stu.getId());
-			map.put("data", data);
-			map.put("count", count);
-			map.put("msg", "succes");
-			map.put("code",0);
+		if(page!=null&&limit!=null) {
+			Student stu=sservice.queryObject(user.getId());
+			int currentPage =Integer.parseInt(page);
+			int size = Integer.parseInt(limit);
+			int offset = (currentPage - 1)*size;
+			int count = service.queryCountByStudent(stu.getId());
+			if(count!=0) {
+				List<Mark> data = service.queryPageByStudent(offset, size,stu.getId());
+				map.put("data", data);
+				map.put("count", count);
+				map.put("msg", "succes");
+				map.put("code",0);
+			}else {
+				map.put("msg", "error");
+				map.put("code",0);
+			}
+			
+			return map;
 		}else {
 			map.put("msg", "error");
 			map.put("code",0);
+			return map;
 		}
-		
-		return map;
+	
 	}
 	
 	

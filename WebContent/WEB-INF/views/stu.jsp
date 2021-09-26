@@ -13,6 +13,7 @@
 <meta charset="UTF-8">
 <title>学员页面</title>
 <script src="js/jquery.min.js"></script>
+<link rel="icon" href="./favicon.ico">
 <link rel="stylesheet" href="./layui/css/layui.css">
 <script src="layui/layui.js"></script>
 <style type="text/css">

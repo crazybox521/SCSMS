@@ -69,6 +69,7 @@ public class UserController {
 			List<User> list = userService.search(Integer.parseInt(key));
 			map.put("data", list);
 			map.put("total", 1);
+			map.put("msg", "success");
 		}else {
 			int currentPage =Integer.parseInt(page);
 			int size = Integer.parseInt(limit);
@@ -77,6 +78,7 @@ public class UserController {
 			List<User> list = userService.queryPage(offset, size);
 			map.put("data", list);
 			map.put("total", total);
+			map.put("msg","success");
 			
 		}
 		    map.put("code",0);

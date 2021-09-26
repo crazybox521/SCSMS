@@ -1,6 +1,5 @@
 package com.scsms.controller;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
@@ -58,32 +57,6 @@ public class TeacherController {
 		return map;
 	}
 	
-	@RequestMapping("insert")
-	@ResponseBody
-	public void insert(Teacher obj,HttpServletResponse response) throws IOException {
-	
-		int i = service.insert(obj);
-		if(i!=0) {
-			try {
-				PrintWriter out = response.getWriter();
-				out.write("{\"result\":\"yes\"}");
-				out.flush();
-				out.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}else {
-			try {
-				PrintWriter out = response.getWriter();
-				out.write("{\"result\":\"no\"}");
-				out.flush();
-				out.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
 	
 	@RequestMapping("update")
 	@ResponseBody

@@ -141,7 +141,7 @@ public class LessonController {
 	
 	@RequestMapping("lessonlist")
 	@ResponseBody
-	public Map<String,Object> queryAll(HttpServletResponse response) {
+	public Map<String,Object> queryAll(HttpServletResponse response,HttpServletRequest req) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<Lesson> data = service.queryAll();
 		int count =service.queryCount();

@@ -2,12 +2,18 @@ package com.scsms.controller;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.scsms.pojo.User;
 import com.scsms.service.UserService;
@@ -37,7 +43,7 @@ public class IndexController {
 	public String welcome() {
 		return "welcome";
 	}
-	@CrossOrigin
+//	jsp的登录端口
 	@RequestMapping("login")
 	public String login(HttpSession session,User obj){
 		User log=userService.login(obj);
@@ -74,7 +80,66 @@ public class IndexController {
 			}
 			return path;
 		}
+	}
 		
+		
+		//vue分离的登录端口
+		@RequestMapping("login-vue")
+		@ResponseBody
+		@CrossOrigin
+		public Map<String,Object> login2(HttpSession session,@RequestBody User obj){
+			 
+			User log=userService.login(obj);
+			Map<String, Object> map = new HashMap<String, Object>();
+			String msg="";
+		 
+			//String Authorization ="";
+			int id=0;
+			String role="";
+			if(log==null) {
+				msg="error";
+			}else{
+				msg="success";
+				
+				switch (log.getRole().getId()) {
+				case 1:
+					session.removeAttribute("user");
+					session.removeAttribute("dept");
+					session.removeAttribute("admin");
+					session.setAttribute("admin", log);
+					role="ad-mjid";
+					id=log.getId();	
+					break;
+				case 2:
+					session.removeAttribute("user");
+					session.removeAttribute("admin");
+					session.removeAttribute("dept");
+					session.setAttribute("teacher", log);
+					role="tea-jiju";
+					id=log.getId();
+					break;
+					
+				case 3:
+					session.removeAttribute("admin");
+					session.removeAttribute("dept");
+					session.removeAttribute("user");
+					session.setAttribute("student", log);
+					role="stu-jhhu";
+					id=log.getId();
+				
+					break;
+				default:
+					break;
+				}
+				
+				
+				
+			}
+			map.put("id",id);
+			map.put("msg",msg);
+			map.put("role",role);
+		 
+			return map;
 		
 	}
 	

@@ -192,9 +192,15 @@ public class PayController {
 	
 	@RequestMapping("queryPageByStudent")
 	@ResponseBody
-	public Map<String,Object> queryPageByStudent(String page,String limit,HttpServletRequest request,HttpSession session){
+	public Map<String,Object> queryPageByStudent(String page,String limit,String userid,HttpServletRequest request,HttpSession session){
 		User user=(User)session.getAttribute("student");
-		Student stu=sservice.queryObject(user.getId());
+		Student stu=null;
+		if(userid!=null) {
+			stu=sservice.queryObject(Integer.parseInt(userid));
+		}else {
+			stu=sservice.queryObject(user.getId());
+		}
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		int currentPage =Integer.parseInt(page);
 		int size = Integer.parseInt(limit);

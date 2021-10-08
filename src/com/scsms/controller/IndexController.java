@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -28,7 +27,7 @@ public class IndexController {
 		return "index"; 
 	}
 	
-	@RequestMapping("index")
+	@RequestMapping("adminIndex")
 	public String index2(HttpSession session) { 
 		 session.invalidate();
 		return "index"; 

@@ -239,6 +239,7 @@ public class UserController {
 	@ResponseBody
 	public void update(HttpSession session, User obj,HttpServletResponse response,HttpServletRequest request,String password_ud) {
 		String action=request.getParameter("action");
+		System.out.println(obj);
 		int i=0;
 		if("pw".equals(action)) {
 			if(userService.login(obj)!=null) {

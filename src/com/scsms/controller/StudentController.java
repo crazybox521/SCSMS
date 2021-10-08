@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -61,8 +62,11 @@ public class StudentController {
 	@RequestMapping("update")
 	@ResponseBody
 	public void update(Student obj,HttpServletResponse response,HttpSession session) {
+		
+		System.out.println(obj);
 		User user = (User)session.getAttribute("student");
 		User user2 = (User)session.getAttribute("admin");
+		System.out.println(user);
 		int i=0;
 		if(user!=null) {
 			obj.setUser(user);

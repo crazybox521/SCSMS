@@ -62,8 +62,12 @@ public class NoticeController {
 	public Map<String,Object> stu_noticelist(HttpSession session){
 		Map<String, Object> map = new HashMap<String, Object>();
 		User user=(User) session.getAttribute("student");
-		Student stu=sservice.queryObject(user.getId());
-		List<Notice> data = service.queryByStudent(stu.getId());
+		Student stu=null;
+		List<Notice> data=null;
+		if(user!=null) {
+			stu=sservice.queryObject(user.getId());
+		}
+		data = service.queryByStudent(stu.getId());
 		if(data!=null && !data.isEmpty()) {
 			map.put("data", data);
 			map.put("msg", "succes");

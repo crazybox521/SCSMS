@@ -261,6 +261,7 @@ public class GradeController {
 	@RequestMapping("gradelist")
 	@ResponseBody
 	public Map<String,Object> gradelist(int id){
+		System.out.println(id);
 		Map<String, Object> map = new HashMap<String, Object>();
 		int count = service.queryCountByLessonid(id);
 		List<Grade> data = service.queryByLessonid(id);
@@ -320,9 +321,12 @@ public class GradeController {
 			map.put("msg", "succes");
 		    map.put("code",0);
 		}else {
-			map.put("msg", "fail");
+			map.put("msg", "nodata");
 		    map.put("code",0);
 		}
+		}else {
+			map.put("msg", "fail");
+		    map.put("code",0);
 		}
 		
 		return map;

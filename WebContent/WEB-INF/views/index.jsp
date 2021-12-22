@@ -148,7 +148,7 @@ basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServer
     </div>
     <div class="display_btn">
       <div class="btn1">
-        <a href="adminIndex">首页</a>
+        <a href="index">首页</a>
         <a href="lesson" id="btna" target="ifr">课程中心</a>
       </div>
       <div class="btn2">

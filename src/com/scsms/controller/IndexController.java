@@ -27,7 +27,7 @@ public class IndexController {
 		return "index"; 
 	}
 	
-	@RequestMapping("adminIndex")
+	@RequestMapping("index")
 	public String index2(HttpSession session) { 
 		 session.invalidate();
 		return "index"; 

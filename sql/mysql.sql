@@ -1,6 +1,6 @@
 /*
 创建一个数据库
-名字叫做chenyu_bsdb
+名字叫做bs_db
 本数据库表使用innodb引擎
 */
 
@@ -39,7 +39,7 @@ create table user(
 	time datetime
 
 );
-insert into user(id,username,password,roleid) values(1,'admin','201731064415',1);
+insert into user(id,username,password,roleid) values(1,'admin','123456',1);
 
 /**
  * 
@@ -203,9 +203,9 @@ ALTER TABLE student_grade TYPE= INNODB;
 **/
 
 insert into lesson(id,lessonname,notes,price,hours)values(1,'java后端','此为系统默认数据，可删除',10000,1000);
-insert into room(roomname,location)values('培训中心101','西南石油大学思学楼，此为默认数据，可删除');
+insert into room(roomname,location)values('培训中心101','培训中心一楼，此为默认数据，可删除');
 insert into lesson(id,lessonname,notes,price,hours)values(2,'web前端','此为系统默认数据，可删除',10000,1000);
-insert into room(roomname,location)values('培训中心102','西南石油大学思学楼，此为默认数据，可删除');
+insert into room(roomname,location)values('培训中心102','培训中心一楼，此为默认数据，可删除');
 insert into user(id,username,password,roleid) values(2,'t1','123456',2);
 insert into teacher(userid)values(2);
 update teacher set name = '教师一测试',sex = '男',phone = '12345678901',email = '1@163.com',notes = '系统默认教师模板，可删除',lessonid = 1 where userid = 2; 
